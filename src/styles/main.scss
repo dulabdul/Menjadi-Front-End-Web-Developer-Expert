@@ -1,0 +1,399 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600&family=Raleway:wght@100;300;400;500;600&display=swap');
+$linkColor: #bf1722;
+$backgroundColor: #cfd2c6;
+$primaryColor: #36392d;
+$secondaryColor: #535845;
+$fontParagraf: 'Montserrat', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.4s;
+  scroll-behavior: smooth;
+}
+body {
+  background-color: $backgroundColor;
+}
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  padding: 8px;
+  background-color: $linkColor;
+  color: white;
+  z-index: 100;
+  &:focus {
+    top: 0;
+  }
+}
+.container {
+  margin: 0 auto;
+  width: 80%;
+}
+// menu styles
+
+.menu_section {
+  padding: 8em 0;
+  overflow: hidden;
+  .menu_heading {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: $primaryColor;
+    font-size: 4em;
+    text-align: center;
+  }
+  .menu_wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-content: center;
+    gap: 32px 14px;
+    .card_menu-wrapper {
+      background-color: #b7bca9;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+        0 4px 6px -4px rgb(0 0 0 / 0.1);
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      .menu_wrapper-img {
+        img {
+          background-position: center;
+          background-size: cover;
+          width: 100%;
+          overflow: hidden;
+          transition: all 0.3s;
+          height: 300px;
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+      .menu_content {
+        padding: 0.5em 1em;
+        display: flex;
+        flex-direction: column;
+        a {
+          text-decoration: none;
+        }
+        h3 {
+          margin: 0;
+          font-size: 2.2em;
+          font-family: 'Montserrat', sans-serif;
+          color: $primaryColor;
+          &:hover {
+            color: blue;
+          }
+        }
+        .menu_wrapper_info {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-family: 'Raleway', sans-serif;
+          margin: 0;
+          h4,
+          p {
+            font-size: 1.2em;
+            color: $primaryColor;
+          }
+          p {
+            font-weight: 600;
+          }
+        }
+        .menu_description {
+          font-family: 'Raleway', sans-serif;
+          color: $primaryColor;
+          font-size: 1em;
+          margin: 0;
+          font-weight: 300;
+          margin-bottom: 1.2em;
+          line-height: 1.6;
+        }
+      }
+    }
+  }
+}
+
+// menu styles
+
+// detail css
+.detail_section {
+  padding: 8em 0;
+  overflow: hidden;
+  .detail_title {
+    font-family: $fontParagraf;
+    font-size: 3em;
+    color: $primaryColor;
+    text-align: center;
+  }
+  .detail_wrapper {
+    display: grid;
+    padding-top: 2em;
+    justify-content: start;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 4em;
+    .image_detail img {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      transition: 0.3s all;
+    }
+    .information_detail {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      gap: 0.4em;
+      p,
+      h3 {
+        font-family: 'Montserrat', sans-serif;
+      }
+    }
+    h3 {
+      font-size: 3em;
+      font-weight: 600;
+      color: $primaryColor;
+    }
+    h6 {
+      font-size: 1.5em;
+      color: $primaryColor;
+    }
+    p {
+      font-size: 1em;
+      font-weight: 500;
+      color: $primaryColor;
+    }
+    .description_detail {
+      color: $secondaryColor;
+    }
+  }
+  .detail_menu {
+    padding: 4em 0;
+    h3 {
+      font-size: 2em;
+      font-family: $fontParagraf;
+      color: $primaryColor;
+      font-weight: 600;
+    }
+    .menu_category {
+      padding: 2em 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-content: space-between;
+      gap: 2em;
+      h4 {
+        font-size: 1.5em;
+        font-weight: 600;
+        margin-bottom: 0.4em;
+      }
+      p {
+        display: inline;
+      }
+    }
+  }
+  .detail-form {
+    padding: 3em 0;
+    form {
+      display: flex;
+      flex-direction: column;
+      input,
+      textarea {
+        margin: 15px 0;
+        padding: 15px 10px;
+        width: 100%;
+        outline: none;
+        border: 1px solid #bbb;
+        border-radius: 20px;
+        display: inline-block;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -ms-transition: 0.2s ease all;
+        -o-transition: 0.2s ease all;
+        transition: 0.2s ease all;
+        &:focus {
+          border-color: $secondaryColor;
+        }
+      }
+    }
+    h2 {
+      color: $primaryColor;
+      font-family: $fontParagraf;
+      font-size: 2em;
+      margin: 0.4em 0;
+    }
+    .detail-form-card {
+      background-color: #36392d;
+      padding: 2em 1em;
+      border-radius: 1em;
+
+      label {
+        font-size: 0.8em;
+        color: #fff;
+        font-family: $fontParagraf;
+      }
+      .btnSubmit {
+        border-radius: 1em;
+        color: $primaryColor;
+        background-color: #fff;
+        padding: 1em;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+          background-color: $secondaryColor;
+          color: #fff;
+        }
+      }
+    }
+  }
+  .review_container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+  .review_heading {
+    font-size: 3em;
+    color: $primaryColor;
+    font-family: $fontParagraf;
+    padding: 0.3em 0;
+  }
+  .review_detail {
+    padding: 1em 2em;
+    border-radius: 2em;
+    font-family: $fontParagraf;
+    border: 1px solid $secondaryColor;
+
+    .review_detail-name {
+      font-size: 2em;
+      color: $primaryColor;
+      font-weight: 600;
+    }
+    .review_detail-date {
+      font-size: 0.8em;
+    }
+    .review_detail-content {
+      font-size: 1em;
+      margin-top: 0.4em;
+    }
+    .review_detail-date,
+    .review_detail-content {
+      font-weight: 400;
+    }
+  }
+  .like {
+    min-width: 55px;
+    min-height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #db0000;
+
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    border-radius: 50%;
+    border: 0;
+
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    &:hover {
+      background-color: #bf1722;
+    }
+  }
+}
+
+// end detail css
+
+// not found css
+#notFound {
+  text-align: center;
+}
+// end of notfound css
+
+// loader CSS
+
+// end of loader CSS
+
+//responsive CSS //
+
+@media screen and (max-width: 576px) {
+  .container {
+    width: 90%;
+  }
+  .menu_section {
+    padding: 6em 0;
+    .menu_heading {
+      font-size: 2.5em;
+      text-align: center;
+    }
+    .menu_wrapper {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1.5em 0;
+      .menu_wrapper-img {
+        img {
+          height: 100%;
+        }
+      }
+    }
+    .menu_content h3 {
+      font-size: 1.8em;
+    }
+  }
+  .detail_section {
+    padding: 6em 0;
+    .detail_title {
+      font-size: 2em;
+    }
+    .detail_wrapper {
+      grid-template-columns: 1fr;
+      gap: 1em;
+      .information_detail {
+        h3 {
+          font-size: 1.8em;
+        }
+        h6 {
+          font-size: 1.2em;
+        }
+        p {
+          font-size: 0.9em;
+        }
+      }
+    }
+    .detail_menu {
+      padding: 2em 0;
+      .menu_category {
+        grid-template-columns: 1fr;
+      }
+    }
+    .review_heading {
+      font-size: 2em;
+    }
+    .review_detail {
+      padding: 0.5em 1em;
+      border-radius: 1em;
+      .review_detail-name {
+        font-size: 1.5em;
+      }
+    }
+  }
+}
+@media screen and (min-width: 577px) and (max-width: 992px) {
+  .container {
+    width: 90%;
+  }
+  .menu_wrapper {
+    grid-template-columns: repeat(1, 1fr);
+    .menu_wrapper-img {
+      img {
+        height: auto;
+      }
+    }
+  }
+}
+
+// end of responsive CSS //

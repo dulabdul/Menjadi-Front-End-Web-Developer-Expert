@@ -176,6 +176,14 @@ class Navbar extends LitElement {
               : ''}">
             ${this.name}</a
           >
+          <button
+            aria-label="hamburger button"
+            @click=${this._hamburgerButton}
+            class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
           <ul class="nav-menu">
             ${this.list.map(
               (item) => html`
@@ -192,14 +200,6 @@ class Navbar extends LitElement {
               `
             )}
           </ul>
-          <button
-            aria-label="hamburger button"
-            @click=${this._hamburgerButton}
-            class="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-          </button>
         </nav>
       </header>
     `;

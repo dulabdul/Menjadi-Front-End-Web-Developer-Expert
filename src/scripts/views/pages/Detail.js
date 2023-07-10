@@ -1,7 +1,8 @@
 /* eslint-disable operator-linebreak */
+import RestaurantFavIdb from '../../data/favorite-restaurant';
 import RestaurantDataSource from '../../data/restaurantsource';
 import UrlParser from '../../routes/url-parser';
-import LikeButtonInitiator from '../../utils/LikeButtonInitiator';
+import LikeButtonPresenter from '../../utils/LikeButtonPresenter';
 import reviewInitiator from '../../utils/reviewInitiator';
 import {
   CreateRestaurantDetailTemplate,
@@ -41,15 +42,16 @@ const Detail = {
     const RestaurantContainer = document.querySelector('#detail');
     const reviewContainerList = document.querySelector('#reviewContainer');
     try {
-      loader.style.display = 'none';
       detailRestaurant.restaurant.customerReviews.forEach((review) => {
         reviewContainerList.innerHTML += createReviewListTemplate(review);
       });
       RestaurantContainer.innerHTML += CreateRestaurantDetailTemplate(
         detailRestaurant.restaurant
       );
-      LikeButtonInitiator.init({
+      loader.style.display = 'none';
+      LikeButtonPresenter.init({
         likeButtonContainer: document.querySelector('#likeButtonContainer'),
+        favoriteRestaurants: RestaurantFavIdb,
         restaurant: {
           id: detailRestaurant.restaurant.id,
           name: detailRestaurant.restaurant.name,
@@ -65,6 +67,8 @@ const Detail = {
       });
     } catch (error) {
       console.log(error);
+      loader.style.display = 'none';
+
       RestaurantContainer.innerHTML = '<error-tag></error-tag>';
     }
   },

@@ -38,7 +38,7 @@ class About extends LitElement {
       align-items: center;
       justify-content: center;
     }
-    .gallery_wrapper img {
+    .gallery_wrapper picture img {
       background-position: cover;
       background-repeat: no-repeat;
       object-position: center;
@@ -62,7 +62,7 @@ class About extends LitElement {
       .gallery_wrapper {
         grid-template-columns: 1fr;
       }
-      .gallery_wrapper img {
+      .gallery_wrapper picture img {
         width: 100%;
       }
     }
@@ -83,10 +83,19 @@ class About extends LitElement {
   constructor() {
     super();
 
-    this.imageSrc = [
-      '/images/heros/gallery1.png',
-      '/images/heros/gallery2.png',
-      '/images/heros/hero-image_1.jpg',
+    this.imageSrcSmall = [
+      {
+        url: '/images/gallery1-small.webp',
+        default: '/images/design/gallery1.webp',
+      },
+      {
+        url: '/images/gallery2-small.webp',
+        default: '/images/design/gallery2.webp',
+      },
+      {
+        url: '/images/hero-image_1-small.webp',
+        default: '/images/design/hero-image_1.webp',
+      },
     ];
   }
 
@@ -109,13 +118,18 @@ class About extends LitElement {
             </div>
           </div>
           <div class="gallery_wrapper">
-            ${this.imageSrc.map(
+            ${this.imageSrcSmall.map(
               (item, index) => html`
-                <div>
+                <picture>
+                  <source
+                    class="lazyload"
+                    media="(max-width: 600px)"
+                    srcset=${item.url} />
                   <img
-                    src=${item}
-                    alt="Image ${index + 1} gallery" />
-                </div>
+                    class="lazyload"
+                    src=${item.default}
+                    alt=${`Gallery ${index}`} />
+                </picture>
               `
             )}
           </div>

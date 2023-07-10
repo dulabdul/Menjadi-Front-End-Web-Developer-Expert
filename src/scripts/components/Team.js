@@ -111,28 +111,32 @@ class Team extends LitElement {
         job: 'Founder',
         description:
           'In velit auctor non auctor in. Id pellentesque facilisis at lectus sed in sit tellus mauris.',
-        imageUrl: '/images/design/team-2.png',
+        imageUrlSmall: '/images/team-2-small.webp',
+        imageUrlDefault: '/images/design/team-2.webp',
       },
       {
         name: 'Bryhan Machado',
         job: 'Chef',
         description:
           'In velit auctor non auctor in. Id pellentesque facilisis at lectus sed in sit tellus mauris.',
-        imageUrl: '/images/design/team-1.png',
+        imageUrlSmall: '/images/team-1-small.webp',
+        imageUrlDefault: '/images/design/team-1.webp',
       },
       {
         name: 'Adam Joshep',
         job: 'Chef',
         description:
           'In velit auctor non auctor in. Id pellentesque facilisis at lectus sed in sit tellus mauris.',
-        imageUrl: '/images/design/team-3.png',
+        imageUrlSmall: '/images/team-3-small.webp',
+        imageUrlDefault: '/images/design/team-3.webp',
       },
       {
         name: 'Putin Desque',
         job: 'Chef',
         description:
           'In velit auctor non auctor in. Id pellentesque facilisis at lectus sed in sit tellus mauris.',
-        imageUrl: '/images/design/team-4.png',
+        imageUrlSmall: '/images/team-4-small.webp',
+        imageUrlDefault: '/images/design/team-4.webp',
       },
     ];
   }
@@ -152,9 +156,16 @@ class Team extends LitElement {
             ${this.listTeam.map(
               (item) => html`
                 <div class="ourteam_content">
-                  <img
-                    src=${item.imageUrl}
-                    alt=${item.name} />
+                  <picture>
+                    <source
+                      class="lazyload"
+                      media="(max-width: 600px)"
+                      srcset=${item.imageUrlSmall} />
+                    <img
+                      class="lazyload"
+                      src=${item.imageUrlDefault}
+                      alt=${item.name} />
+                  </picture>
                   <h4>${item.name}</h4>
                   <h5>${item.job}</h5>
                   <p>${item.description}</p>

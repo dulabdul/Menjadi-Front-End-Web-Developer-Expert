@@ -26,7 +26,7 @@ class Hero extends LitElement {
       background-color: #9fa68c;
     }
     .hero_section {
-      background-image: url('/images/heros/hero-image_4.jpg');
+      background-image: url('/images/hero-image_4-large.webp');
       width: 100%;
       height: 700px;
       object-fit: cover;
@@ -62,6 +62,9 @@ class Hero extends LitElement {
       .heading_wrapper {
         align-items: center;
         justify-content: center;
+      }
+      .hero_section {
+        background-image: url('/images/hero-image_4-small.webp');
       }
     }
   `;

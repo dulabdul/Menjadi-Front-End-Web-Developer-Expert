@@ -1,10 +1,11 @@
 import 'regenerator-runtime'; /* for async await transpile */
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import '../styles/main.scss';
 import './components/header/header';
 import './components/footer/footer';
 import './components/Hero';
 import './components/About';
-import './components/Menu';
 import './components/Team';
 import './components/Error';
 import './components/loader-indicator';

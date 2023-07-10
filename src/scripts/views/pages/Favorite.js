@@ -1,47 +1,25 @@
+/* eslint-disable no-new */
 import RestaurantFavIdb from '../../data/favorite-restaurant';
-import {
-  CreateRestaurantItemTemplate,
-  createNotFoundTemplate,
-} from '../templates/template-creator';
+import FavoriteRestaurantSearchPresenter from './liked-restaurant/favorite-restaurant-search-presenter';
+import FavoriteRestaurantSearchView from './liked-restaurant/favorite-restaurant-search-view';
+import FavoriteRestaurantShowPresenter from './liked-restaurant/favorite-restaurant-show-presenter';
+
+const view = new FavoriteRestaurantSearchView();
 
 const Favorite = {
   async render() {
-    return /* html */ `
-    <section class="menu_section">
-    <div class="container">
-    <loader-indicator></loader-indicator>
-
-          <div class="menu_wrapper" id="menu"></div>
-
-          <div id="notFound">
-          
-          </div>
-          </div>
-      </section>
-        `;
+    return view.getTemplate();
   },
 
   async afterRender() {
-    const restaurants = await RestaurantFavIdb.getAllRestaurant();
-    const restaurantsContainer = document.querySelector('#menu');
-    const notFoundFavoriteContainer = document.querySelector('#notFound');
-    const loader = document
-      .querySelector('loader-indicator')
-      .shadowRoot.querySelector('.loader');
-    try {
-      if (restaurants.length === 0) {
-        loader.style.display = 'none';
-        notFoundFavoriteContainer.innerHTML += createNotFoundTemplate();
-      } else {
-        restaurants.forEach((resto) => {
-          loader.style.display = 'none';
-          restaurantsContainer.innerHTML += CreateRestaurantItemTemplate(resto);
-        });
-      }
-    } catch (error) {
-      console.log(error);
-      restaurantsContainer.innerHTML = '<error-tag></error-tag>';
-    }
+    new FavoriteRestaurantShowPresenter({
+      view,
+      favoriteRestaurants: RestaurantFavIdb,
+    });
+    new FavoriteRestaurantSearchPresenter({
+      view,
+      favoriteRestaurants: RestaurantFavIdb,
+    });
   },
 };
 

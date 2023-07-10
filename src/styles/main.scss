@@ -82,6 +82,8 @@ body {
           font-size: 2.2em;
           font-family: 'Montserrat', sans-serif;
           color: $primaryColor;
+          min-height: 44px;
+          min-width: 44px;
           &:hover {
             color: blue;
           }
@@ -109,6 +111,57 @@ body {
           font-weight: 300;
           margin-bottom: 1.2em;
           line-height: 1.6;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 5; /* number of lines to show */
+          line-clamp: 5;
+          -webkit-box-orient: vertical;
+        }
+      }
+    }
+  }
+  // search css
+  /*Resize the wrap to see the search bar change!*/
+  .wrap_search {
+    padding: 2em 0;
+    .search {
+      width: 350px;
+      position: relative;
+      margin: 0;
+      display: flex;
+      .searchTerm {
+        width: 100%;
+        padding: 1rem;
+        background-color: #eaeaeb;
+        color: #6c6c6c;
+        border-radius: 8px;
+        border: none;
+        transition: all 0.3s;
+        &:focus {
+          border: none;
+          outline: none;
+          box-shadow: 0 1px 12px #b8c6db;
+          -moz-box-shadow: 0 1px 12px #b8c6db;
+          -webkit-box-shadow: 0 1px 12px #b8c6db;
+        }
+      }
+      .search-btn {
+        background-color: transparent;
+        font-size: 18px;
+        padding: 6px 9px;
+        margin-left: -45px;
+        border: none;
+        color: #6c6c6c;
+        transition: all 0.4s;
+        z-index: 10;
+        &:hover {
+          transform: scale(1.2);
+          cursor: pointer;
+          color: black;
+        }
+        &:focus {
+          outline: none;
+          color: black;
         }
       }
     }
@@ -199,6 +252,8 @@ body {
       flex-direction: column;
       input,
       textarea {
+        min-width: 44px;
+        min-height: 44px;
         margin: 15px 0;
         padding: 15px 10px;
         width: 100%;
@@ -243,6 +298,8 @@ body {
         border: none;
         cursor: pointer;
         transition: all 0.3s;
+        min-width: 44px;
+        min-height: 44px;
         &:hover {
           background-color: $secondaryColor;
           color: #fff;
@@ -310,6 +367,40 @@ body {
 // end detail css
 
 // not found css
+.notfound-error {
+  margin: 0 auto;
+  padding: 8rem;
+  display: flex;
+  justify-content: center;
+  .notfound-container {
+    .iserror,
+    .notfound-tagline {
+      text-align: center;
+      font-size: 6em;
+      color: $linkColor;
+      font-weight: 700;
+      font-family: $fontParagraf;
+    }
+    .clickme {
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
+      margin: 0 auto;
+      .notfound-title {
+        a {
+          display: block;
+          min-width: 44px;
+          min-height: 44px;
+          color: $linkColor;
+          font-size: 2em;
+          &:hover {
+            color: blue;
+          }
+        }
+      }
+    }
+  }
+}
 #notFound {
   text-align: center;
 }
@@ -386,11 +477,13 @@ body {
   .container {
     width: 90%;
   }
-  .menu_wrapper {
-    grid-template-columns: repeat(1, 1fr);
-    .menu_wrapper-img {
-      img {
-        height: auto;
+  .menu_section {
+    .menu_wrapper {
+      grid-template-columns: repeat(2, 1fr);
+      .menu_wrapper-img {
+        img {
+          height: auto;
+        }
       }
     }
   }

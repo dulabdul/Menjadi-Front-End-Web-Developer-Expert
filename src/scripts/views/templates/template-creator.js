@@ -2,23 +2,31 @@ import CONFIG from '../../globals/config';
 
 const CreateRestaurantItemTemplate = (restaurant) => /* html */ `
        
-          <div class="card_menu-wrapper">
+          <div class="restaurant card_menu-wrapper">
                   <div class="menu_wrapper-img">
                   <a href="${`/#/detail/${restaurant.id}`}">
-                    <img src="${
-                      CONFIG.BASE_IMAGE_URL_SMALL + restaurant.pictureId
-                    }" alt="${restaurant.name}"/>
+                  <picture>
+                  <source class="lazyload" media="(max-width: 600px)" srcset="${
+                    CONFIG.BASE_IMAGE_URL_SMALL + restaurant.pictureId
+                  }">
+                  <img class="lazyload" src="${
+                    CONFIG.BASE_IMAGE_URL_LARGE + restaurant.pictureId
+                  }" alt="${restaurant.name || '-'}"/>
+                </picture>
+               
                   </a>
                   </div>
                   <div class="menu_content">
                   <a href="${`/#/detail/${restaurant.id}`}">
-                  <h3 class="menu_name">${restaurant.name}</h3>
+                  <h3 class="menu_name">${restaurant.name || '-'}</h3>
                   </a>
                     <div class="menu_wrapper_info">
                       <h4>${restaurant.city}</h4>
                       <p>${restaurant.rating}</p>
                     </div>
-                    <p class="menu_description">${restaurant.description}</p>
+                    <p class="menu_description">${
+                      restaurant.description || '-'
+                    }</p>
                   </div>
                 </div>
      
@@ -28,9 +36,14 @@ const CreateRestaurantDetailTemplate = (restaurant) => /* html */ `
 <h2 class="detail_title">${restaurant.name}</h2>
 <div class="detail_wrapper" id="detail">
 <div class="image_detail">
-<img src="${CONFIG.BASE_IMAGE_URL_SMALL + restaurant.pictureId}" alt="${
-  restaurant.name
+<picture>
+<source media="(max-width: 600px)" srcset="${
+  CONFIG.BASE_IMAGE_URL_SMALL + restaurant.pictureId
+}">
+<img src="${CONFIG.BASE_IMAGE_URL_LARGE + restaurant.pictureId}" alt="${
+  restaurant.name || '-'
 }"/>
+</picture>
 </div>
 <div class="information_detail">
 <h3>Information</h3>
@@ -71,13 +84,13 @@ const createReviewListTemplate = (restaurant) => /* html */ `
 </div>
 `;
 const createLikeButtonTemplate = () => /* html */ `
-  <button aria-label="like this movie" id="likeButton" class="like">
+  <button aria-label="like this restaurant" id="likeButton" class="like">
      <i class="fa fa-heart-o" aria-hidden="true"></i>
   </button>
 `;
 
 const createLikedButtonTemplate = () => /* html */ `
-  <button aria-label="unlike this movie" id="likeButton" class="like">
+  <button aria-label="unlike this restaurant" id="likeButton" class="like">
     <i class="fa fa-heart" aria-hidden="true"></i>
   </button>
 `;
